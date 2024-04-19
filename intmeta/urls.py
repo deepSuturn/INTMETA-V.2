@@ -19,13 +19,12 @@ from intmeta.intmetapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('results', views.results, name='results'),
-    path('kraken', views.kraken, name='kraken'),
-    path('clark', views.clark, name='clark'),
-    path('metamaps', views.metamaps, name='metamaps'),
-    path('about', views.about, name='about'),
-    path('dc', views.dc, name='dc'),
-    path('krona', views.krona, name='krona')
-
+    path('p/intmeta/', views.index, name='index'),
+    path('p/intmeta/results', views.results, name='results'),
+    path('p/intmeta/kraken', views.kraken, name='kraken'),
+    path('p/intmeta/clark', views.clark, name='clark'),
+    path('p/intmeta/metamaps', views.metamaps, name='metamaps'),
+    path('p/intmeta/about', views.about, name='about'),
+    path('p/intmeta/dc', views.dc, name='dc'),
+    path('p/intmeta/krona', views.krona, name='krona')
 ]

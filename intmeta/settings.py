@@ -30,7 +30,9 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['152.67.42.101', 'katudv.com', 'www.katudv.com']
+ALLOWED_HOSTS = ['152.67.42.101', 'katudv.com', 'www.katudv.com', 'localhost']
+
+CSRF_TRUSTED_ORIGINS = ['https://katudv.com']
 
 # Application definition
 
@@ -124,10 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
-STATIC_URL = '/static/'
+STATIC_URL = 'p/intmeta/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'p/intmeta/media/'
 
 # Iframe
 X_FRAME_OPTIONS = 'SAMEORIGIN'

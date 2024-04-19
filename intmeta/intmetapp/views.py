@@ -1,20 +1,15 @@
-from html.entities import name2codepoint
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 import os
 import json
 from intmeta.intmetapp import core
 from intmeta.intmetapp import subcalls
-import datetime
-import pandas as pd
 
 # Create your views here.
-
 
 def index(request):
     request.session.clear()
     return render(request, 'index.html')
-
 
 def kraken(request, uploaded_file2=None):
     if request.method == 'POST':
@@ -31,19 +26,19 @@ def kraken(request, uploaded_file2=None):
         # Tratamento de erro, modifica o comportamento a cada erro identificado
         try:
             dfd3, dfd3_2, maxpercent, maxreads, total_reads, most_classified_organism = core.kraken(file_directory, attribute)
-            request.session['dfd3'] = dfd3
-            request.session['dfd3_2'] = dfd3_2
-            request.session['maxpercent'] = int(maxpercent)
-            request.session['maxreads'] = int(maxreads)
-            request.session['total_reads'] = int(total_reads)
-            request.session['most_classified_organism'] = most_classified_organism
-            request.session['twofiles'] = False
-            request.session.save()
+            request.session['user_data'] = {
+                'dfd3': dfd3,
+                'dfd3_2': dfd3_2,
+                'maxpercent': int(maxpercent),
+                'maxreads': int(maxreads),
+                'total_reads': int(total_reads),
+                'most_classified_organism': most_classified_organism,
+                'twofiles': False
+            }
             if uploaded_file2 is not None:
                 dfd32, dfd3_22, maxpercent2, maxreads2, total_reads2, most_classified_organism2 = core.kraken(file_directory, attribute)
-                request.session['dfd32'] = dfd32
-                request.session['twofiles'] = True
-                request.session.save()
+                request.session['user_data']['dfd32'] = dfd32
+                request.session['user_data']['twofiles'] = True
         except IndexError:
             return redirect(index)
         except ValueError:
@@ -51,7 +46,6 @@ def kraken(request, uploaded_file2=None):
         subcalls.krakenkrona(file_directory)
         return redirect(results)
     return render(request, 'kraken.html')
-
 
 def clark(request):
     if request.method == 'POST':
@@ -72,12 +66,14 @@ def clark(request):
         # Tratamento de erro, modifica o comportamento a cada erro identificado
         try:
             dfd3, dfd3_2, maxpercent, maxreads, total_reads = core.clark(file_directory)
-            request.session['dfd3'] = dfd3
-            request.session['dfd3_2'] = dfd3_2
-            request.session['maxpercent'] = int(maxpercent)
-            request.session['maxreads'] = int(maxreads)
-            request.session['total_reads'] = int(total_reads)
-            request.session.save()
+            request.session['user_data'] = {
+                'dfd3': dfd3,
+                'dfd3_2': dfd3_2,
+                'maxpercent': int(maxpercent),
+                'maxreads': int(maxreads),
+                'total_reads': int(total_reads),
+                'twofiles': False
+            }
         except IndexError:
             return redirect(index)
         except ValueError:
@@ -86,31 +82,30 @@ def clark(request):
         return redirect(results)
     return render(request, 'clark.html')
 
-
 def metamaps(request):
     return render(request, 'metamaps.html')
-
 
 def dc(request):
     request.session.clear()
     return render(request, 'index.html')
 
-
 def about(request):
     return render(request, 'about.html')
-
 
 def krona(request):
     return render(request, 'krona.html')
 
-
 def results(request):
-    dfd3 = request.session['dfd3']
-    dfd3_2 = request.session['dfd3_2']
-    maxpercent = request.session['maxpercent']
-    maxreads = request.session['maxreads']
-    total_reads = request.session['total_reads']
-    most_classified_organism = request.session['most_classified_organism']
+    user_data = request.session.get('user_data', None)
+    if not user_data:
+        return redirect(index)
+    
+    dfd3 = user_data['dfd3']
+    dfd3_2 = user_data['dfd3_2']
+    maxpercent = user_data['maxpercent']
+    maxreads = user_data['maxreads']
+    total_reads = user_data['total_reads']
+    most_classified_organism = user_data['most_classified_organism']
     dfd3_json = json.dumps(dfd3, indent=4, default=str, ensure_ascii=False)
     dfd3_2 = json.dumps(dfd3_2, indent=4, default=str, ensure_ascii=False)
     print(dfd3_2)
