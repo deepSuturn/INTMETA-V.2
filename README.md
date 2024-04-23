@@ -1,5 +1,5 @@
 <h1>IntMETA - Plataforma de Visualização de Dados Metagenômicos </h1>
-<img src="https://github.com/thcasthi/INTMETA1.0/assets/124000903/a3b165c1-4e3d-4bc2-b399-15471ab1d8d2">
+<img src="https://github.com/Thiagocastro-dev/INTMETA-V.2/blob/main/Structure%20of%20DNA%20Science%20Presentation%20in%20Light%20Blue%20Green%20Lined%20Style.png">
 
 A plataforma IntMETA é uma ferramenta avançada de visualização de dados metagenômicos, desenvolvida como Progressive Web Application (PWA) com design responsivo. Essa abordagem permite a utilização da plataforma em diversos dispositivos e sistemas operacionais, desde que tenham acesso à internet.
 
