@@ -1,0 +1,225 @@
+/*
+    INTMETA 1.0 Landing Page CSS File
+    Page done by Jean Adriano Silva dos Remédios
+    https://github.com/deepsuturn
+/*
+
+/*INITIAL CONFIGS*/
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat", sans-serif;
+    color: #66615B;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../img/background-image-intmeta.gif);
+    background-repeat: repeat;
+    background-position: left;
+}
+
+p{
+    font-size: 1.15rem;
+}
+
+/*MAIN MENU SETTINGS*/
+
+nav{
+    background-color: white;
+    box-shadow: 1px -5px 10px 5px rgba(44, 44, 44, 0.308);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1#title{
+    font-size: 1.6em;
+    padding: 0.5em;
+}
+
+ul{
+    display: flex;
+    list-style-type: none;
+    grid-column: span 2;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
+    text-align: center;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.menu-item{
+    padding: 1em;
+    position: relative;
+    transition-duration: 0.7s;
+    transition-timing-function: ease;
+}
+
+.menu-item:after{
+    content:"";
+    position: absolute;
+    background-color: black;
+    height: 3px;
+    width: 0%;
+    left: 15%;
+    bottom: 10px;
+    transition: 0.7s;
+}
+
+.menu-item:hover:after{
+    width: 70%;
+}
+
+.menu-item:hover{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+
+/*MAIN OBJECTS*/
+
+main{
+    margin: auto;
+    max-width: 70vw;
+    border-radius: 1.25em;
+    padding-top: 3vh;
+    box-shadow: 2px 3px 10px 5px rgba(44, 44, 44, 0.308);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#main-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.125em;
+    align-items: center;
+}
+
+#intro-text{
+    margin-left: 3vw;
+}
+
+#intro-image{
+    margin-left: 4vw;
+}
+
+h1, h2{
+    font-size: 2em;
+    font-weight: 500;
+    padding: 1em;
+    padding-left: 3em;
+    color: black;
+}
+
+.content-title{
+    padding-left: 2vw;
+    width: 100%;
+    text-align: center;
+}
+
+p.paragraph-content{
+    max-width: 68vw;
+    width: 100%;
+    margin-left: 4vw;
+    margin-bottom: 4vh;
+    text-align: justify;
+    word-wrap: wrap;
+    word-break: keep-all;
+}
+
+/*BUTTON MENU CONCLUSION*/
+
+#button-menu{
+    max-width: 20vw;
+    margin: auto;
+    padding-bottom: 3vh;
+    padding-bottom: 3vh;
+    margin-top: 1vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center center;
+}
+
+#button-title{
+    grid-column: span 2;
+    padding-left: 0vw;
+    font-size: 1.8em;
+}
+
+
+#buttons{
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    padding: 15px 30px 15px 30px;
+    background-color: #E62063;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 7px;
+    margin: 10px 10px 0px 10px;
+    display: block;
+    max-height: 50px;
+
+
+    transition-property: transform;
+    transition-duration: 0.7s;
+}
+
+button:hover{
+    background-color:  #E62063;
+    transform: scale(1.1);
+    color: #24B7CB;
+    border-color: #24B7CB;
+}
+
+button:active{
+    color: #ac1749; 
+    border-color: #ac1749;
+    background-color: rgb(230, 230, 230);
+}
+
+
+
+/*FOOTER*/
+
+footer{
+    background-color: #24B7CB;
+    margin-top: auto;
+    display: flex;
+
+}
+
+.footer-icon{
+    padding: 0.3em 0.5em;
+    margin-left: 0.2em;
+    margin-top: 0.1em;
+    background-color: black;
+    border-radius: 40px;
+    transition-duration: 0.7s;
+}
+
+
+.footer-icon:hover{
+    margin-left: 0.6rem;
+}
